@@ -1,69 +1,117 @@
-Flight Price Prediction – End-to-End MLOps System
+✈️ Flight Price Prediction – End-to-End MLOps System
 
-Python Streamlit FastAPI Airflow Grafana License
+Python | Streamlit | FastAPI | Apache Airflow | PostgreSQL | Grafana
 
-Flight Price Prediction is a complete MLOps system designed to simulate a production-grade workflow for predicting flight prices, validating incoming data, scheduling predictions, and monitoring model & data health through dashboards. This project integrates FastAPI, Streamlit, Airflow, Great Expectations, Grafana, and PostgreSQL into one cohesive pipeline.
+Flight Price Prediction is a complete end-to-end MLOps system that simulates a production-grade workflow for predicting flight prices, validating incoming data, scheduling predictions, and monitoring model & data health through dashboards.
 
-Project Highlights
+The system integrates FastAPI, Streamlit, Airflow, Great Expectations, Grafana, and PostgreSQL into a unified pipeline.
+
+🚀 Project Highlights
+
 On-demand flight price predictions through Streamlit UI
-FastAPI backend to expose ML model and store results in PostgreSQL
-Scheduled predictions with Airflow DAGs
-Data validation & preprocessing with Python
-Monitoring dashboard using Grafana
+
+FastAPI backend exposing ML model and storing results in PostgreSQL
+
+Scheduled predictions using Apache Airflow DAGs
+
+Data validation & preprocessing with Python and Great Expectations
+
+Monitoring dashboards using Grafana
+
 Pie chart for model performance (accuracy)
+
 Bar chart for high-alert inputs
-End-to-end pipeline for data ingestion, validation, prediction, and monitoring
-Demo Screenshots
-Streamlit App
-Streamlit UI 1	Streamlit UI 2	Streamlit UI 3
-Streamlit 1	Streamlit 2	Streamlit 3
-Airflow DAGs
-Data Ingestion DAG	Prediction DAG
-Airflow Ingestion	Airflow Prediction
-PostgreSQL Database (Predictions Storage)
-Database Prediction	Database Statistics
-Postgres 1	Postgres 2
-Grafana Dashboards
-Ingestion	Prediction
-Grafana Ingestion Dashboard	Grafana Prediction Dashboard
-Tech Stack
-Language: Python 3.10+
-Libraries:
+
+End-to-end pipeline: ingestion → validation → prediction → monitoring
+
+🧱 Architecture Overview
+
+Streamlit UI → User inputs flight details
+
+FastAPI Service → Runs model & stores predictions
+
+PostgreSQL → Stores predictions & metadata
+
+Airflow DAGs → Scheduled ingestion & predictions
+
+Great Expectations → Data quality checks
+
+Grafana → Monitoring & visualization
+
+🛠 Tech Stack
+
+Language
+
+Python 3.10+
+
+Libraries
+
 pandas, numpy, requests, scikit-learn, SQLAlchemy
-Web Framework: Streamlit, FastAPI
-Workflow Orchestration: Apache Airflow
-Monitoring & Visualization: Grafana
-Database: PostgreSQL
-IDE: VS Code
-Version Control: Git + GitHub
-How It Works
-User Interface (Streamlit)
 
-Users provide flight details and get real-time predictions.
-Historical predictions are displayed with input features.
-ML Model API (FastAPI)
+Web Frameworks
 
-Exposes /predict endpoint for model predictions.
-Saves results to the database with features and timestamp.
-Database (PostgreSQL + SQLAlchemy)
+Streamlit, FastAPI
 
-Stores all prediction records.
-Enables historical analysis for monitoring model performance.
-Scheduled Prediction Pipeline (Airflow)
+Workflow Orchestration
 
-Ingests new data and triggers predictions at defined intervals.
-Logs all scheduled runs for auditing and debugging.
-Data Validation & Preprocessing
+Apache Airflow
 
-Ingested raw data is checked for missing or invalid values.
-Cleaned and transformed data is stored as “good data” for predictions.
-Monitoring Dashboard (Grafana)
+Monitoring & Visualization
 
-Pie Chart: Shows model accuracy (Correct, Incorrect, Skipped).
-Bar Chart: Highlights input features triggering high alerts.
-Enables visual tracking of model performance and data quality over time.
-Project Structure
+Grafana
 
+Database
+
+PostgreSQL
+
+Tools
+
+VS Code, Git, GitHub, Docker
+
+⚙️ How It Works
+1. Streamlit User Interface
+
+Users enter flight details
+
+Displays real-time predictions
+
+Shows historical predictions
+
+2. FastAPI ML Model API
+
+/predict endpoint for inference
+
+Stores prediction + features + timestamp
+
+3. PostgreSQL Database
+
+Stores all prediction records
+
+Enables historical monitoring
+
+4. Airflow Scheduled Pipeline
+
+Ingests new data
+
+Triggers batch predictions
+
+Logs execution details
+
+5. Data Validation & Preprocessing
+
+Checks missing/invalid values
+
+Separates good & bad data
+
+6. Grafana Dashboard
+
+Pie Chart → Model accuracy
+
+Bar Chart → High-alert features
+
+Tracks model & data health
+
+📁 Project Structure
 predictive-pipeline/
 │
 ├── airflow/
@@ -78,22 +126,21 @@ predictive-pipeline/
 │   │   ├── error_data/
 │
 ├── great_expectations/
-│
 ├── logs/
 │
-├── app/                     # FastAPI application
+├── app/                     # FastAPI app
 │   ├── businessLogic/
 │   ├── controllers/
 │   ├── helpers/
 │   ├── databaseLogic/
 │   └── main.py
 │
-├── streamlit/               # Streamlit UI
+├── streamlit/
 │   ├── pages/
 │   └── predictions.py
 │
 ├── database/
-│   ├── db-setup.sql
+│   └── db-setup.sql
 │
 ├── scripts/
 │   ├── split_dataset.py
@@ -103,34 +150,55 @@ predictive-pipeline/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
-Getting Started
-1. Clone the repository
-git clone https://github.com/visalibaskarankalpana/predictive-pipeline.git
+
+▶️ Getting Started
+1️⃣ Clone Repository
+git clone <your-repo-url>
 cd predictive-pipeline
-2. Set up Python environment
+
+2️⃣ Create Virtual Environment
 python -m venv venv
-# Linux/Mac
-source venv/bin/activate  
-# Windows
-venv\Scripts\activate     
+
+
+Linux/Mac
+
+source venv/bin/activate
+
+
+Windows
+
+venv\Scripts\activate
+
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-3. Run FastAPI
+
+4️⃣ Run FastAPI
 uvicorn src.api.main:app --reload
-4. Run Streamlit
+
+5️⃣ Run Streamlit
 streamlit run streamlit/predictive.py
-5. Start Airflow
+
+6️⃣ Start Airflow
 airflow db init
 airflow webserver --port 8080
 airflow scheduler
-** Conclusion**
-Flight Price Prediction demonstrates a complete end-to-end ML workflow including:
+
+✅ Conclusion
+
+This project demonstrates a complete production-style ML workflow including:
 
 Prediction API
 
-User-facing interface
+User-facing UI
 
-Scheduled data processing
+Scheduled batch processing
 
-Monitoring and visualization
+Data validation
 
-It’s an excellent example of production-ready ML pipelines integrating Python, Airflow, FastAPI, Streamlit, PostgreSQL, and Grafana.
+Monitoring & visualization
+
+It showcases how modern ML systems are built and deployed using Python, FastAPI, Streamlit, Airflow, PostgreSQL, and Grafana.
+
+📜 License
+
+This project is open-source and available
